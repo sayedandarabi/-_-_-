@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;700&family=Roboto+Mono&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Vazirmatn', sans-serif; background: #F7F3E8; color: #17211F; }
+    .slide-container { width: 1280px; min-height: 720px; display: flex; flex-direction: column; padding: 48px; position: relative; }
+    .accent-bar { position: absolute; top: 0; left: 0; width: 100%; height: 6px; display: flex; }
+    .bar-mvp { width: 50%; height: 100%; background: #D4A72C; }
+    .bar-prod { width: 50%; height: 100%; background: #D9775B; }
+    h1 { font-size: 42px; font-weight: 700; color: #0F766E; margin-bottom: 8px; text-align: right; }
+    .subtitle { font-size: 20px; color: #4A5568; margin-bottom: 48px; text-align: right; }
+    .content-zone { flex: 1; display: flex; flex-direction: column; justify-content: flex-start; }
+    table { width: 100%; border-collapse: collapse; margin-top: 24px; }
+    th { background: #E2F0EF; color: #0F766E; padding: 16px; text-align: right; border: 1px solid #D1CCC1; font-size: 16px; }
+    td { padding: 16px; border: 1px solid #D1CCC1; vertical-align: top; font-size: 18px; }
+    .mvp-cell { background: #fbf3df; }
+    .prod-cell { background: #f9e8e3; }
+    .badge { display: inline-block; padding: 4px 12px; border-radius: 4px; font-size: 14px; font-weight: 700; margin-bottom: 8px; }
+    .badge-mvp { background: #D4A72C; color: #FFFFFF; }
+    .badge-prod { background: #D9775B; color: #FFFFFF; }
+    .page-number { position: absolute; bottom: 48px; left: 48px; color: #17211F; font-size: 14px; }
+  </style>
+</head>
+<body>
+  <div class="slide-container">
+    <div class="accent-bar">
+      <div class="bar-mvp"></div>
+      <div class="bar-prod"></div>
+    </div>
+    
+    <h1>وضعیت فعلی: هسته محلی کامل، همگام‌سازی در سطح قرارداد</h1>
+    <p class="subtitle">مقایسه قابلیت‌های پیاده‌سازی شده در MVP و اهداف نسخه نهایی</p>
+
+    <div class="content-zone">
+      <table>
+        <thead>
+          <tr>
+            <th style="width: 20%">بخش سیستم</th>
+            <th style="width: 40%">وضعیت MVP (پیاده‌سازی شده)</th>
+            <th style="width: 40%">هدف نهایی (تولید)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>ذخیره‌سازی</strong></td>
+            <td class="mvp-cell">
+              <span class="badge badge-mvp">محلی (AsyncStorage)</span><br>
+              دیتابیس آفلاین کامل با مدل دفتر کل دوبل و نگهداری وضعیت محلی.
+            </td>
+            <td class="prod-cell">
+              <span class="badge badge-prod">رمزنگاری شده (SQLite)</span><br>
+              رمزنگاری سطح دیتابیس دستگاه و مدیریت حجیم داده‌ها.
+            </td>
+          </tr>
+          <tr>
+            <td><strong>همگام‌سازی</strong></td>
+            <td class="mvp-cell">
+              <span class="badge badge-mvp">صف انتظار (Outbox)</span><br>
+              ثبت عملیات با شناسه Idempotency و صف آماده برای ارسال.
+            </td>
+            <td class="prod-cell">
+              <span class="badge badge-prod">سرویس پس‌زمینه هوشمند</span><br>
+              همگام‌سازی خودکار با Backoff، مدیریت پهنای باند و رفع تعارض.
+            </td>
+          </tr>
+          <tr>
+            <td><strong>تراکنش‌ها</strong></td>
+            <td class="mvp-cell">
+              <span class="badge badge-mvp">توازن دوبل (Double Entry)</span><br>
+              اعتبارسنجی تراز، طرف معامله و ممیزی رویدادها در سمت کلاینت.
+            </td>
+            <td class="prod-cell">
+              <span class="badge badge-prod">تأیید نهایی ابری</span><br>
+              اعتبارسنجی قوانین مالیاتی و تطبیق نرخ ارز در لحظه همگام‌سازی.
+            </td>
+          </tr>
+          <tr>
+            <td><strong>گزارش‌دهی</strong></td>
+            <td class="mvp-cell">
+              <span class="badge badge-mvp">محاسبات لحظه‌ای کلاینت</span><br>
+              سود و زیان و ترازنامه بر اساس داده‌های موجود در دستگاه.
+            </td>
+            <td class="prod-cell">
+              <span class="badge badge-prod">گزارش‌های ترکیبی/سازمانی</span><br>
+              گزارش‌های چند شعبه‌ای و تلفیقی با خروجی Excel/PDF.
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="page-number">2</div>
+  </div>
+</body>
+</html>

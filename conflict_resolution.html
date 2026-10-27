@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;700&family=Roboto+Mono&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Vazirmatn', sans-serif; background: #F7F3E8; color: #17211F; }
+    .slide-container { width: 1280px; min-height: 720px; display: flex; flex-direction: column; padding: 48px; position: relative; }
+    .accent-bar { position: absolute; top: 0; left: 0; width: 100%; height: 6px; display: flex; }
+    .bar-mvp { width: 50%; height: 100%; background: #D4A72C; }
+    .bar-prod { width: 50%; height: 100%; background: #D9775B; }
+    h1 { font-size: 42px; font-weight: 700; color: #0F766E; margin-bottom: 8px; text-align: right; }
+    .subtitle { font-size: 20px; color: #4A5568; margin-bottom: 48px; text-align: right; }
+    .content-zone { flex: 1; display: flex; flex-direction: column; justify-content: flex-start; }
+    .conflict-matrix { display: grid; grid-template-columns: 1.2fr 1fr; gap: 30px; margin-top: 20px; }
+    .matrix-box { border: 1px solid #D1CCC1; background: #FFFFFF; padding: 24px; border-radius: 4px; }
+    .box-header { font-weight: 700; color: #D9775B; font-size: 20px; margin-bottom: 16px; display: flex; align-items: center; gap: 10px; }
+    .rule-item { margin-bottom: 16px; padding-bottom: 12px; border-bottom: 1px dashed #E2E8F0; }
+    .rule-item:last-child { border-bottom: 0; }
+    .rule-title { font-weight: 700; font-size: 16px; color: #17211F; margin-bottom: 4px; }
+    .rule-body { font-size: 15px; color: #4A5568; }
+    .flow-viz { background: #E2F0EF; border: 1px solid #0F766E; border-radius: 4px; padding: 20px; }
+    .flow-node { background: #FFFFFF; border: 1px solid #0F766E; padding: 10px; text-align: center; margin: 10px 0; border-radius: 4px; font-size: 14px; position: relative; }
+    .flow-arrow { text-align: center; color: #0F766E; font-size: 20px; line-height: 1; }
+    .page-number { position: absolute; bottom: 48px; left: 48px; color: #17211F; font-size: 14px; }
+  </style>
+</head>
+<body>
+  <div class="slide-container">
+    <div class="accent-bar">
+      <div class="bar-mvp"></div>
+      <div class="bar-prod"></div>
+    </div>
+    
+    <h1>رفع تعارض: حقیقت مالی هرگز خودکار ادغام نمی‌شود</h1>
+    <p class="subtitle">تمایز بین ثبت مجدد (Replay) و تعارض واقعی؛ اولویت با دقت است، نه سرعت</p>
+
+    <div class="content-zone">
+      <div class="conflict-matrix">
+        <div class="matrix-box">
+          <div class="box-header">قواعد تصمیم‌گیری</div>
+          <div class="rule-item">
+            <div class="rule-title">۱. شناسه Idempotency یکسان</div>
+            <div class="rule-body">اگر شناسه در سرور موجود است، درخواست نادیده گرفته شده و پاسخ موفقیت‌آمیز قبلی بازگردانده می‌شود (بدون تعارض).</div>
+          </div>
+          <div class="rule-item">
+            <div class="rule-title">۲. تفاوت نسخه (Version Mismatch)</div>
+            <div class="rule-body">اگر نسخه محلی از نسخه سرور عقب‌تر باشد، وضعیت به <span style="color: #D9775B; font-weight: 700;">Conflict</span> تغییر یافته و ثبت متوقف می‌شود.</div>
+          </div>
+          <div class="rule-item">
+            <div class="rule-title">۳. عدم حذف فیزیکی</div>
+            <div class="rule-body">هیچ تراکنشی حذف نمی‌شود. تعارض‌ها باید با «سند برگشتی» یا «اصلاحیه» توسط کاربر حل شوند.</div>
+          </div>
+        </div>
+
+        <div class="flow-viz">
+          <div class="box-header" style="color: #0F766E;">گردش کار انسانی</div>
+          <div class="flow-node">تشخیص تعارض در سرور</div>
+          <div class="flow-arrow">↓</div>
+          <div class="flow-node" style="border-color: #D9775B;">هشدار به کاربر در اپلیکیشن</div>
+          <div class="flow-arrow">↓</div>
+          <div class="flow-node">مشاهده مقادیر سرور vs محلی</div>
+          <div class="flow-arrow">↓</div>
+          <div class="flow-node" style="background: #0F766E; color: white;">تأیید یکی یا ثبت سند اصلاحی</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="page-number">6</div>
+  </div>
+</body>
+</html>

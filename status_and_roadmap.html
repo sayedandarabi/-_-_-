@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;700&family=Roboto+Mono&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Vazirmatn', sans-serif; background: #F7F3E8; color: #17211F; }
+    .slide-container { width: 1280px; min-height: 720px; display: flex; flex-direction: column; padding: 48px; position: relative; }
+    .accent-bar { position: absolute; top: 0; left: 0; width: 100%; height: 6px; display: flex; }
+    .bar-mvp { width: 50%; height: 100%; background: #D4A72C; }
+    .bar-prod { width: 50%; height: 100%; background: #D9775B; }
+    h1 { font-size: 42px; font-weight: 700; color: #0F766E; margin-bottom: 8px; text-align: right; }
+    .subtitle { font-size: 20px; color: #4A5568; margin-bottom: 48px; text-align: right; }
+    .content-zone { flex: 1; display: flex; flex-direction: column; }
+    .timeline { position: relative; padding: 20px 0; margin-top: 20px; }
+    .timeline-line { position: absolute; top: 0; bottom: 0; right: 30px; width: 2px; background: #D1CCC1; }
+    .timeline-item { position: relative; margin-bottom: 30px; padding-right: 70px; }
+    .timeline-dot { position: absolute; top: 0; right: 21px; width: 20px; height: 20px; border-radius: 10px; border: 4px solid #F7F3E8; }
+    .dot-done { background: #0F766E; }
+    .dot-now { background: #D4A72C; }
+    .dot-next { background: #D9775B; }
+    .item-card { background: #FFFFFF; border: 1px solid #D1CCC1; padding: 16px 20px; border-radius: 4px; display: flex; justify-content: space-between; align-items: center; }
+    .item-info { flex: 1; }
+    .item-title { font-weight: 700; color: #17211F; font-size: 18px; }
+    .item-status { font-size: 14px; font-weight: 700; padding: 2px 10px; border-radius: 10px; }
+    .status-done { background: #E2F0EF; color: #0F766E; }
+    .status-now { background: #fbf3df; color: #D4A72C; }
+    .status-next { background: #f9e8e3; color: #D9775B; }
+    .page-number { position: absolute; bottom: 48px; left: 48px; color: #17211F; font-size: 14px; }
+  </style>
+</head>
+<body>
+  <div class="slide-container">
+    <div class="accent-bar">
+      <div class="bar-mvp"></div>
+      <div class="bar-prod"></div>
+    </div>
+    
+    <h1>مسیر پیش‌رو: از تایید MVP تا پایداری تولید</h1>
+    <p class="subtitle">وضعیت فعلی لایه‌ها و ۳ گام اجرایی برای رسیدن به نسخه پایدار</p>
+
+    <div class="content-zone">
+      <div class="timeline">
+        <div class="timeline-line"></div>
+        
+        <div class="timeline-item">
+          <div class="timeline-dot dot-done"></div>
+          <div class="item-card">
+            <div class="item-info">
+              <div class="item-title">هسته حسابداری و رابط کاربری RTL</div>
+              <div style="font-size: 14px; color: #4A5568;">توازن دوبل، داشبورد مالی و ثبت آفلاین کامل است.</div>
+            </div>
+            <div class="item-status status-done">تکمیل شده</div>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot dot-now"></div>
+          <div class="item-card">
+            <div class="item-info">
+              <div class="item-title">پیاده‌سازی Sync Worker و رفع تعارض</div>
+              <div style="font-size: 14px; color: #4A5568;">اتصال صف محلی به API و مدیریت بازگشت خطا.</div>
+            </div>
+            <div class="item-status status-now">گام بعدی</div>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot dot-next"></div>
+          <div class="item-card">
+            <div class="item-info">
+              <div class="item-title">امنیت داده و بیلد نهایی اندروید</div>
+              <div style="font-size: 14px; color: #4A5568;">رمزنگاری محلی، MFA و انتشار APK/AAB رسمی.</div>
+            </div>
+            <div class="item-status status-next">در انتظار</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="page-number">8</div>
+  </div>
+</body>
+</html>

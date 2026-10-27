@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;700&family=Roboto+Mono&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Vazirmatn', sans-serif; background: #F7F3E8; color: #17211F; }
+    .slide-container { width: 1280px; min-height: 720px; display: flex; flex-direction: column; padding: 48px; position: relative; }
+    .accent-bar { position: absolute; top: 0; left: 0; width: 100%; height: 6px; display: flex; }
+    .bar-mvp { width: 50%; height: 100%; background: #D4A72C; }
+    .bar-prod { width: 50%; height: 100%; background: #D9775B; }
+    h1 { font-size: 42px; font-weight: 700; color: #0F766E; margin-bottom: 8px; text-align: right; }
+    .subtitle { font-size: 20px; color: #4A5568; margin-bottom: 48px; text-align: right; }
+    .content-zone { flex: 1; display: flex; flex-direction: column; justify-content: center; }
+    .flow-step { display: flex; align-items: center; margin-bottom: 20px; width: 100%; }
+    .step-num { width: 60px; height: 60px; border-radius: 30px; background: #D4A72C; color: #FFFFFF; display: flex; justify-content: center; align-items: center; font-size: 24px; font-weight: 700; flex-shrink: 0; }
+    .step-box { flex: 1; margin-right: 24px; border: 1px solid #D1CCC1; padding: 16px 24px; background: #FFFFFF; border-radius: 4px; }
+    .step-title { font-weight: 700; color: #0F766E; font-size: 20px; margin-bottom: 4px; }
+    .step-desc { font-size: 16px; color: #4A5568; }
+    .code { font-family: 'Roboto Mono', monospace; font-size: 14px; color: #D9775B; }
+    .page-number { position: absolute; bottom: 48px; left: 48px; color: #17211F; font-size: 14px; }
+  </style>
+</head>
+<body>
+  <div class="slide-container">
+    <div class="accent-bar">
+      <div class="bar-mvp"></div>
+      <div class="bar-prod"></div>
+    </div>
+    
+    <h1>مسیر ثبت آفلاین: اولویت با اعتبار محلی است</h1>
+    <p class="subtitle">تراکنش‌ها پیش از هرگونه تلاش برای شبکه، به صورت اتمیک در دستگاه تثبیت می‌شوند</p>
+
+    <div class="content-zone">
+      <div class="flow-step">
+        <div class="step-num">۱</div>
+        <div class="step-box">
+          <div class="step-title">اعتبارسنجی دامنه (Domain Validation)</div>
+          <div class="step-desc">تطبیق مجموع بدهکار و بستانکار در سطح مدل کلاینت؛ جلوگیری از ثبت سند نامتوازن.</div>
+        </div>
+      </div>
+      <div class="flow-step">
+        <div class="step-num">۲</div>
+        <div class="step-box">
+          <div class="step-title">تولید شناسه‌های اتمیک</div>
+          <div class="step-desc">تولید <span class="code">idempotencyKey</span> منحصر‌به‌فرد برای جلوگیری از ثبت تکراری در سرور.</div>
+        </div>
+      </div>
+      <div class="flow-step">
+        <div class="step-num">۳</div>
+        <div class="step-box">
+          <div class="step-title">ثبت در حافظه محلی (Authoritative Local Commit)</div>
+          <div class="step-desc">ذخیره همزمان تراکنش، رویداد ممیزی (Audit) و آیتم خروجی (Outbox) در <span class="code">AsyncStorage</span>.</div>
+        </div>
+      </div>
+      <div class="flow-step">
+        <div class="step-num" style="background: #D9775B;">۴</div>
+        <div class="step-box" style="border-color: #D9775B;">
+          <div class="step-title" style="color: #D9775B;">فعال‌سازی ماشه همگام‌سازی (Sync Trigger)</div>
+          <div class="step-desc">افزودن عملیات به صف پردازش پس‌زمینه با وضعیت <span class="code">pending</span>.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="page-number">4</div>
+  </div>
+</body>
+</html>

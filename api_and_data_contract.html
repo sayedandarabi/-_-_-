@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;700&family=Roboto+Mono&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Vazirmatn', sans-serif; background: #F7F3E8; color: #17211F; }
+    .slide-container { width: 1280px; min-height: 720px; display: flex; flex-direction: column; padding: 48px; position: relative; }
+    .accent-bar { position: absolute; top: 0; left: 0; width: 100%; height: 6px; display: flex; }
+    .bar-mvp { width: 50%; height: 100%; background: #D4A72C; }
+    .bar-prod { width: 50%; height: 100%; background: #D9775B; }
+    h1 { font-size: 42px; font-weight: 700; color: #0F766E; margin-bottom: 8px; text-align: right; }
+    .subtitle { font-size: 20px; color: #4A5568; margin-bottom: 48px; text-align: right; }
+    .content-zone { flex: 1; display: grid; grid-template-columns: 1fr 1fr; gap: 30px; }
+    .contract-card { border: 1px solid #D1CCC1; background: #FFFFFF; border-radius: 4px; padding: 20px; }
+    .card-title { font-weight: 700; color: #17211F; font-size: 18px; margin-bottom: 12px; background: #E2F0EF; padding: 8px 12px; border-radius: 2px; }
+    .code { font-family: 'Roboto Mono', monospace; font-size: 13px; color: #0F766E; }
+    .field-row { display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px solid #F1F5F9; font-size: 14px; }
+    .field-name { font-weight: 700; color: #334155; font-family: 'Roboto Mono', monospace; }
+    .field-type { color: #64748B; font-family: 'Roboto Mono', monospace; }
+    .endpoint { font-weight: 700; color: #D9775B; font-family: 'Roboto Mono', monospace; margin-bottom: 10px; display: block; }
+    .page-number { position: absolute; bottom: 48px; left: 48px; color: #17211F; font-size: 14px; }
+  </style>
+</head>
+<body>
+  <div class="slide-container">
+    <div class="accent-bar">
+      <div class="bar-mvp"></div>
+      <div class="bar-prod"></div>
+    </div>
+    
+    <h1>قرارداد داده‌ای: تضمین یکپارچگی در هر دو سمت</h1>
+    <p class="subtitle">ساختار درخواستی و فیلدهای کلیدی برای پشتیبانی از همگام‌سازی چند مرحله‌ای</p>
+
+    <div class="content-zone">
+      <div class="contract-card">
+        <div class="card-title">تراکنش حسابداری (Payload)</div>
+        <div class="field-row"><span class="field-name">id</span><span class="field-type">uuid (v4)</span></div>
+        <div class="field-row"><span class="field-name">organizationId</span><span class="field-type">string</span></div>
+        <div class="field-row"><span class="field-name">idempotencyKey</span><span class="field-type">string (unique)</span></div>
+        <div class="field-row"><span class="field-name">version</span><span class="field-type">int (incremental)</span></div>
+        <div class="field-row"><span class="field-name">lines</span><span class="field-type">Array&lt;DebitCredit&gt;</span></div>
+        <div class="field-row"><span class="field-name">auditTrail</span><span class="field-type">JSON (actor, dev)</span></div>
+      </div>
+
+      <div class="contract-card">
+        <div class="card-title">API Endpoints (tRPC)</div>
+        <span class="endpoint">POST accounting.syncBatch</span>
+        <div class="field-row">ارسال تراکنش‌های آفلاین به صورت دسته‌ای.</div>
+        
+        <span class="endpoint" style="margin-top: 20px;">GET accounting.fetchChanges</span>
+        <div class="field-row">دریافت تغییرات سایر شعبه‌ها از آخرین همگام‌سازی.</div>
+
+        <span class="endpoint" style="margin-top: 20px;">POST accounting.resolveConflict</span>
+        <div class="field-row">ثبت تصمیم کاربر برای تراکنش‌های دارای تعارض.</div>
+      </div>
+    </div>
+
+    <div class="page-number">7</div>
+  </div>
+</body>
+</html>

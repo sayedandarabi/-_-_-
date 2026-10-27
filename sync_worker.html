@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;700&family=Roboto+Mono&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Vazirmatn', sans-serif; background: #F7F3E8; color: #17211F; }
+    .slide-container { width: 1280px; min-height: 720px; display: flex; flex-direction: column; padding: 48px; position: relative; }
+    .accent-bar { position: absolute; top: 0; left: 0; width: 100%; height: 6px; display: flex; }
+    .bar-mvp { width: 50%; height: 100%; background: #D4A72C; }
+    .bar-prod { width: 50%; height: 100%; background: #D9775B; }
+    h1 { font-size: 42px; font-weight: 700; color: #0F766E; margin-bottom: 8px; text-align: right; }
+    .subtitle { font-size: 20px; color: #4A5568; margin-bottom: 48px; text-align: right; }
+    .content-zone { flex: 1; display: grid; grid-template-columns: 1fr 1.2fr; gap: 40px; align-items: start; }
+    .tech-card { border: 1px solid #D1CCC1; background: #FFFFFF; border-radius: 4px; padding: 24px; height: 100%; }
+    .card-title { font-weight: 700; color: #0F766E; font-size: 22px; margin-bottom: 20px; display: flex; align-items: center; gap: 12px; }
+    .list-item { margin-bottom: 16px; display: flex; align-items: flex-start; gap: 12px; font-size: 17px; }
+    .bullet { width: 8px; height: 8px; border-radius: 4px; background: #D9775B; margin-top: 8px; flex-shrink: 0; }
+    .code-block { font-family: 'Roboto Mono', monospace; font-size: 14px; background: #F1F5F9; padding: 12px; border-radius: 4px; color: #1E293B; margin-top: 8px; direction: ltr; text-align: left; }
+    .page-number { position: absolute; bottom: 48px; left: 48px; color: #17211F; font-size: 14px; }
+  </style>
+</head>
+<body>
+  <div class="slide-container">
+    <div class="accent-bar">
+      <div class="bar-mvp"></div>
+      <div class="bar-prod"></div>
+    </div>
+    
+    <h1>طرح پیاده‌سازی Sync Worker: پایدار و هوشمند</h1>
+    <p class="subtitle">سرویس پس‌زمینه برای مدیریت خودکار انتقال داده‌ها با رعایت محدودیت‌های شبکه</p>
+
+    <div class="content-zone">
+      <div class="tech-card" style="border-top: 4px solid #D4A72C;">
+        <div class="card-title">محرک‌ها (Triggers)</div>
+        <div class="list-item"><div class="bullet"></div><div><strong>اتصال شبکه (NetInfo):</strong> شروع خودکار با تغییر وضعیت از آفلاین به آنلاین.</div></div>
+        <div class="list-item"><div class="bullet"></div><div><strong>ثبت تراکنش جدید:</strong> ماشه فوری پس از تأیید Commit محلی.</div></div>
+        <div class="list-item"><div class="bullet"></div><div><strong>سرویس دوره‌ای (Task):</strong> بررسی مجدد آیتم‌های شکست خورده هر ۱۵ دقیقه.</div></div>
+        <div class="list-item"><div class="bullet"></div><div><strong>فراخوانی دستی:</strong> امکان تلاش مجدد توسط کاربر در داشبورد.</div></div>
+      </div>
+
+      <div class="tech-card" style="border-top: 4px solid #D9775B;">
+        <div class="card-title">استراتژی اجرا (Strategy)</div>
+        <div class="list-item"><div class="bullet"></div><div><strong>پردازش دسته‌ای (Batching):</strong> ارسال حداکثر ۲۰ تراکنش در هر درخواست برای بهینه‌سازی پهنای باند.</div></div>
+        <div class="list-item"><div class="bullet"></div><div><strong>صبر نمایی (Exponential Backoff):</strong> افزایش فاصله زمانی بین تلاش‌های مجدد در صورت خطای شبکه (۱، ۵، ۱۵، ۶۰ دقیقه).</div></div>
+        <div class="list-item"><div class="bullet"></div><div><strong>وضعیت ماندگار:</strong> ثبت تعداد تلاش‌ها و آخرین پیام خطا در صف محلی برای عیب‌یابی.</div></div>
+        <div class="code-block">
+          // Sync Logic Pattern<br>
+          while (hasPendingItems && !isOffline) {<br>
+          &nbsp;&nbsp;const batch = outbox.take(20);<br>
+          &nbsp;&nbsp;const result = await api.sync(batch);<br>
+          &nbsp;&nbsp;updateLocalState(result);<br>
+          }
+        </div>
+      </div>
+    </div>
+
+    <div class="page-number">5</div>
+  </div>
+</body>
+</html>
